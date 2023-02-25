@@ -351,7 +351,102 @@ Disk stats (read/write):
 <summary>i3.16xlarge - Single disk</summary>
 
 ```
+root@ip-172-31-10-12:/nvme# fio --name TEST --eta-newline=5s --filename=temp.file --rw=randread --size=2g --io_size=10g --blocksize=4k --ioengine=libaio --fsync=1 --iodepth=1 --direct=1 --numjobs=64 --runtime=60 --group_reporting
+TEST: (g=0): rw=randread, bs=(R) 4096B-4096B, (W) 4096B-4096B, (T) 4096B-4096B, ioengine=libaio, iodepth=1
+...
+fio-3.28
+Starting 64 processes
+Jobs: 64 (f=64): [r(64)][11.7%][r=1270MiB/s][r=325k IOPS][eta 00m:53s]
+Jobs: 64 (f=64): [r(64)][21.7%][r=1266MiB/s][r=324k IOPS][eta 00m:47s]
+Jobs: 64 (f=64): [r(64)][31.7%][r=1272MiB/s][r=326k IOPS][eta 00m:41s]
+Jobs: 64 (f=64): [r(64)][41.7%][r=1271MiB/s][r=325k IOPS][eta 00m:35s]
+Jobs: 64 (f=64): [r(64)][51.7%][r=1263MiB/s][r=323k IOPS][eta 00m:29s]
+Jobs: 64 (f=64): [r(64)][61.7%][r=1271MiB/s][r=325k IOPS][eta 00m:23s]
+Jobs: 64 (f=64): [r(64)][71.7%][r=1270MiB/s][r=325k IOPS][eta 00m:17s]
+Jobs: 64 (f=64): [r(64)][81.7%][r=1264MiB/s][r=323k IOPS][eta 00m:11s]
+Jobs: 64 (f=64): [r(64)][91.7%][r=1270MiB/s][r=325k IOPS][eta 00m:05s]
+Jobs: 64 (f=64): [r(64)][100.0%][r=1263MiB/s][r=323k IOPS][eta 00m:00s]
+TEST: (groupid=0, jobs=64): err= 0: pid=3847: Sat Feb 25 11:37:41 2023
+  read: IOPS=324k, BW=1265MiB/s (1326MB/s)(74.1GiB/60002msec)
+    slat (usec): min=3, max=328, avg= 5.88, stdev= 3.89
+    clat (nsec): min=1302, max=5118.2k, avg=190291.03, stdev=124683.63
+     lat (usec): min=71, max=5123, avg=196.34, stdev=124.77
+    clat percentiles (usec):
+     |  1.00th=[  117],  5.00th=[  133], 10.00th=[  141], 20.00th=[  151],
+     | 30.00th=[  157], 40.00th=[  163], 50.00th=[  172], 60.00th=[  180],
+     | 70.00th=[  190], 80.00th=[  206], 90.00th=[  239], 95.00th=[  273],
+     | 99.00th=[  437], 99.50th=[  996], 99.90th=[ 2147], 99.95th=[ 2311],
+     | 99.99th=[ 2573]
+   bw (  MiB/s): min= 1215, max= 1321, per=100.00%, avg=1266.02, stdev= 0.34, samples=7616
+   iops        : min=311104, max=338280, avg=324101.29, stdev=86.84, samples=7616
+  lat (usec)   : 2=0.01%, 10=0.01%, 20=0.01%, 50=0.01%, 100=0.18%
+  lat (usec)   : 250=91.88%, 500=7.12%, 750=0.23%, 1000=0.11%
+  lat (msec)   : 2=0.35%, 4=0.15%, 10=0.01%
+  cpu          : usr=2.06%, sys=4.32%, ctx=19425976, majf=0, minf=2363
+  IO depths    : 1=100.0%, 2=0.0%, 4=0.0%, 8=0.0%, 16=0.0%, 32=0.0%, >=64=0.0%
+     submit    : 0=0.0%, 4=100.0%, 8=0.0%, 16=0.0%, 32=0.0%, 64=0.0%, >=64=0.0%
+     complete  : 0=0.0%, 4=100.0%, 8=0.0%, 16=0.0%, 32=0.0%, 64=0.0%, >=64=0.0%
+     issued rwts: total=19425518,0,0,0 short=0,0,0,0 dropped=0,0,0,0
+     latency   : target=0, window=0, percentile=100.00%, depth=1
 
+Run status group 0 (all jobs):
+   READ: bw=1265MiB/s (1326MB/s), 1265MiB/s-1265MiB/s (1326MB/s-1326MB/s), io=74.1GiB (79.6GB), run=60002-60002msec
+
+Disk stats (read/write):
+  nvme0n1: ios=19377840/16031, merge=0/37, ticks=3619497/24363, in_queue=3643859, util=99.88%
+root@ip-172-31-10-12:/nvme# fio --name TEST --eta-newline=5s --filename=temp.file --rw=randwrite --size=2g --io_size=10g --blocksize=4k --ioengine=libaio --fsync=1 --iodepth=1 --direct=1 --numjobs=64 --runtime=60 --group_reporting
+TEST: (g=0): rw=randwrite, bs=(R) 4096B-4096B, (W) 4096B-4096B, (T) 4096B-4096B, ioengine=libaio, iodepth=1
+...
+fio-3.28
+Starting 64 processes
+Jobs: 64 (f=64): [w(64)][11.5%][w=696MiB/s][w=178k IOPS][eta 00m:54s]
+Jobs: 64 (f=64): [w(64)][21.3%][w=706MiB/s][w=181k IOPS][eta 00m:48s]
+Jobs: 64 (f=64): [w(64)][29.5%][w=695MiB/s][w=178k IOPS][eta 00m:43s]
+Jobs: 64 (f=64): [w(64)][37.7%][w=706MiB/s][w=181k IOPS][eta 00m:38s]
+Jobs: 64 (f=64): [w(64)][47.5%][w=704MiB/s][w=180k IOPS][eta 00m:32s]
+Jobs: 64 (f=64): [w(64)][55.7%][w=697MiB/s][w=178k IOPS][eta 00m:27s]
+Jobs: 64 (f=64): [w(64)][63.9%][w=691MiB/s][w=177k IOPS][eta 00m:22s]
+Jobs: 64 (f=64): [w(64)][72.1%][w=697MiB/s][w=178k IOPS][eta 00m:17s]
+Jobs: 64 (f=64): [w(64)][80.3%][w=693MiB/s][w=177k IOPS][eta 00m:12s]
+Jobs: 64 (f=64): [w(64)][88.5%][w=700MiB/s][w=179k IOPS][eta 00m:07s]
+Jobs: 64 (f=64): [w(64)][96.7%][w=699MiB/s][w=179k IOPS][eta 00m:02s]
+Jobs: 64 (f=64): [w(64)][100.0%][w=712MiB/s][w=182k IOPS][eta 00m:00s]
+TEST: (groupid=0, jobs=64): err= 0: pid=3986: Sat Feb 25 11:39:29 2023
+  write: IOPS=181k, BW=705MiB/s (740MB/s)(41.3GiB/60002msec); 0 zone resets
+    slat (usec): min=3, max=1206, avg= 6.48, stdev= 4.26
+    clat (nsec): min=1322, max=274277k, avg=278031.79, stdev=4683437.02
+     lat (usec): min=34, max=274280, avg=284.68, stdev=4683.43
+    clat percentiles (usec):
+     |  1.00th=[    77],  5.00th=[   117], 10.00th=[   139], 20.00th=[   153],
+     | 30.00th=[   161], 40.00th=[   169], 50.00th=[   176], 60.00th=[   186],
+     | 70.00th=[   206], 80.00th=[   262], 90.00th=[   273], 95.00th=[   277],
+     | 99.00th=[   314], 99.50th=[   408], 99.90th=[  1090], 99.95th=[  1287],
+     | 99.99th=[261096]
+   bw (  KiB/s): min=421715, max=1068324, per=99.88%, avg=721374.78, stdev=4077.32, samples=7616
+   iops        : min=105418, max=267078, avg=180337.64, stdev=1019.30, samples=7616
+  lat (usec)   : 2=0.01%, 4=0.01%, 10=0.01%, 20=0.01%, 50=0.02%
+  lat (usec)   : 100=3.44%, 250=72.14%, 500=23.96%, 750=0.26%, 1000=0.07%
+  lat (msec)   : 2=0.08%, 4=0.01%, 250=0.01%, 500=0.03%
+  fsync/fdatasync/sync_file_range:
+    sync (nsec): min=34, max=207670, avg=129.40, stdev=410.79
+    sync percentiles (nsec):
+     |  1.00th=[   58],  5.00th=[   65], 10.00th=[   69], 20.00th=[   79],
+     | 30.00th=[   92], 40.00th=[  102], 50.00th=[  112], 60.00th=[  120],
+     | 70.00th=[  131], 80.00th=[  147], 90.00th=[  179], 95.00th=[  229],
+     | 99.00th=[  390], 99.50th=[  454], 99.90th=[  596], 99.95th=[  756],
+     | 99.99th=[20608]
+  cpu          : usr=5.41%, sys=11.66%, ctx=11780275, majf=0, minf=5550
+  IO depths    : 1=200.0%, 2=0.0%, 4=0.0%, 8=0.0%, 16=0.0%, 32=0.0%, >=64=0.0%
+     submit    : 0=0.0%, 4=100.0%, 8=0.0%, 16=0.0%, 32=0.0%, 64=0.0%, >=64=0.0%
+     complete  : 0=0.0%, 4=100.0%, 8=0.0%, 16=0.0%, 32=0.0%, 64=0.0%, >=64=0.0%
+     issued rwts: total=0,10833912,0,10833862 short=0,0,0,0 dropped=0,0,0,0
+     latency   : target=0, window=0, percentile=100.00%, depth=1
+
+Run status group 0 (all jobs):
+  WRITE: bw=705MiB/s (740MB/s), 705MiB/s-705MiB/s (740MB/s-740MB/s), io=41.3GiB (44.4GB), run=60002-60002msec
+
+Disk stats (read/write):
+  nvme0n1: ios=0/10837278, merge=0/12013, ticks=0/3136354, in_queue=3136354, util=96.26%
 ```
 
 </details>
