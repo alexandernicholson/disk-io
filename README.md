@@ -1,6 +1,6 @@
 # disk-io
 
-NVMe driver was installed.
+NVMe driver was confirmed to be installed with the correct kernel before running the following tests.
 
 <details>
 <summary>is4gn.16xlarge - RAID 0</summary>
