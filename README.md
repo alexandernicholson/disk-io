@@ -4,56 +4,6 @@
 <summary>is4gn.16xlarge</summary>
 
 ```
-root@ip-172-31-47-156:/nvme# fio --name TEST --eta-newline=5s --filename=temp.file --rw=randread --size=2g --io_size=10g --blocksize=4k --ioengine=libaio --fsync=1 --iodepth=1 --direct=1 --numjobs=32 --runtime=60 --group_reporting
-TEST: (g=0): rw=randread, bs=(R) 4096B-4096B, (W) 4096B-4096B, (T) 4096B-4096B, ioengine=libaio, iodepth=1
-...
-fio-3.28
-Starting 32 processes
-TEST: Laying out IO file (1 file / 2048MiB)
-Jobs: 32 (f=32): [r(32)][11.7%][r=919MiB/s][r=235k IOPS][eta 00m:53s]
-Jobs: 32 (f=32): [r(32)][20.0%][r=910MiB/s][r=233k IOPS][eta 00m:48s]
-Jobs: 32 (f=32): [r(32)][28.3%][r=920MiB/s][r=235k IOPS][eta 00m:43s]
-Jobs: 32 (f=32): [r(32)][36.7%][r=917MiB/s][r=235k IOPS][eta 00m:38s]
-Jobs: 32 (f=32): [r(32)][45.0%][r=913MiB/s][r=234k IOPS][eta 00m:33s]
-Jobs: 32 (f=32): [r(32)][53.3%][r=918MiB/s][r=235k IOPS][eta 00m:28s]
-Jobs: 32 (f=32): [r(32)][61.7%][r=916MiB/s][r=234k IOPS][eta 00m:23s]
-Jobs: 32 (f=32): [r(32)][70.0%][r=909MiB/s][r=233k IOPS][eta 00m:18s]
-Jobs: 32 (f=32): [r(32)][78.3%][r=912MiB/s][r=233k IOPS][eta 00m:13s]
-Jobs: 32 (f=32): [r(32)][88.3%][r=917MiB/s][r=235k IOPS][eta 00m:07s]
-Jobs: 32 (f=32): [r(32)][98.3%][r=910MiB/s][r=233k IOPS][eta 00m:01s]
-Jobs: 32 (f=0): [f(32)][100.0%][r=886MiB/s][r=227k IOPS][eta 00m:00s]
-TEST: (groupid=0, jobs=32): err= 0: pid=6500: Sat Feb 25 10:49:28 2023
-  read: IOPS=234k, BW=914MiB/s (959MB/s)(53.6GiB/60001msec)
-    slat (usec): min=3, max=3944, avg= 3.97, stdev= 1.33
-    clat (usec): min=29, max=13752, avg=131.92, stdev=18.75
-     lat (usec): min=33, max=13758, avg=136.01, stdev=18.82
-    clat percentiles (usec):
-     |  1.00th=[  105],  5.00th=[  111], 10.00th=[  114], 20.00th=[  119],
-     | 30.00th=[  122], 40.00th=[  126], 50.00th=[  130], 60.00th=[  135],
-     | 70.00th=[  139], 80.00th=[  145], 90.00th=[  153], 95.00th=[  159],
-     | 99.00th=[  194], 99.50th=[  208], 99.90th=[  269], 99.95th=[  326],
-     | 99.99th=[  420]
-   bw (  KiB/s): min=920848, max=948560, per=100.00%, avg=936992.49, stdev=173.89, samples=3808
-   iops        : min=230212, max=237140, avg=234247.19, stdev=43.47, samples=3808
-  lat (usec)   : 50=0.01%, 100=0.08%, 250=99.79%, 500=0.13%, 750=0.01%
-  lat (usec)   : 1000=0.01%
-  lat (msec)   : 2=0.01%, 10=0.01%, 20=0.01%
-  cpu          : usr=1.50%, sys=4.20%, ctx=14045892, majf=0, minf=414
-  IO depths    : 1=100.0%, 2=0.0%, 4=0.0%, 8=0.0%, 16=0.0%, 32=0.0%, >=64=0.0%
-     submit    : 0=0.0%, 4=100.0%, 8=0.0%, 16=0.0%, 32=0.0%, 64=0.0%, >=64=0.0%
-     complete  : 0=0.0%, 4=100.0%, 8=0.0%, 16=0.0%, 32=0.0%, 64=0.0%, >=64=0.0%
-     issued rwts: total=14045674,0,0,0 short=0,0,0,0 dropped=0,0,0,0
-     latency   : target=0, window=0, percentile=100.00%, depth=1
-
-Run status group 0 (all jobs):
-   READ: bw=914MiB/s (959MB/s), 914MiB/s-914MiB/s (959MB/s-959MB/s), io=53.6GiB (57.5GB), run=60001-60001msec
-
-Disk stats (read/write):
-    md0: ios=13995020/60173, merge=0/0, ticks=1784596/0, in_queue=1784596, util=99.97%, aggrios=3511418/7540, aggrmerge=0/7583, aggrticks=456936/1037, aggrin_queue=457974, aggrutil=99.89%
-  nvme3n1: ios=3511049/7535, merge=0/7579, ticks=455407/1044, in_queue=456451, util=99.89%
-  nvme2n1: ios=3511265/7538, merge=0/7575, ticks=458237/989, in_queue=459226, util=99.89%
-  nvme1n1: ios=3511540/7554, merge=0/7594, ticks=457647/1046, in_queue=458693, util=99.89%
-  nvme4n1: ios=3511820/7535, merge=0/7587, ticks=456455/1072, in_queue=457527, util=99.89%
 root@ip-172-31-47-156:/nvme# fio --name TEST --eta-newline=5s --filename=temp.file --rw=randread --size=2g --io_size=10g --blocksize=4k --ioengine=libaio --fsync=1 --iodepth=1 --direct=1 --numjobs=64 --runtime=60 --group_reporting
 TEST: (g=0): rw=randread, bs=(R) 4096B-4096B, (W) 4096B-4096B, (T) 4096B-4096B, ioengine=libaio, iodepth=1
 ...
@@ -100,6 +50,61 @@ Disk stats (read/write):
   nvme2n1: ios=5570132/7533, merge=0/7586, ticks=923199/1306, in_queue=924506, util=99.87%
   nvme1n1: ios=5571014/7532, merge=0/7561, ticks=922701/1337, in_queue=924038, util=99.87%
   nvme4n1: ios=5573142/7529, merge=0/7575, ticks=922188/1375, in_queue=923563, util=99.87%
-  ```
+root@ip-172-31-47-156:/nvme# fio --name TEST --eta-newline=5s --filename=temp.file --rw=randwrite --size=2g --io_size=10g --blocksize=4k --ioengine=libaio --fsync=1 --iodepth=1 --direct=1 --numjobs=64 --runtime=60 --group_reporting
+TEST: (g=0): rw=randwrite, bs=(R) 4096B-4096B, (W) 4096B-4096B, (T) 4096B-4096B, ioengine=libaio, iodepth=1
+...
+fio-3.28
+Starting 64 processes
+Jobs: 64 (f=64): [w(64)][11.7%][w=1422MiB/s][w=364k IOPS][eta 00m:53s]
+Jobs: 64 (f=64): [w(64)][21.7%][w=1415MiB/s][w=362k IOPS][eta 00m:47s]
+Jobs: 64 (f=64): [w(64)][31.7%][w=1430MiB/s][w=366k IOPS][eta 00m:41s]
+Jobs: 64 (f=64): [w(64)][41.7%][w=1430MiB/s][w=366k IOPS][eta 00m:35s]
+Jobs: 64 (f=64): [w(64)][51.7%][w=1434MiB/s][w=367k IOPS][eta 00m:29s]
+Jobs: 64 (f=64): [w(64)][61.7%][w=1423MiB/s][w=364k IOPS][eta 00m:23s]
+Jobs: 64 (f=64): [w(64)][71.7%][w=1430MiB/s][w=366k IOPS][eta 00m:17s]
+Jobs: 64 (f=64): [w(64)][81.7%][w=1434MiB/s][w=367k IOPS][eta 00m:11s]
+Jobs: 64 (f=64): [w(64)][91.7%][w=1429MiB/s][w=366k IOPS][eta 00m:05s]
+Jobs: 64 (f=64): [w(64)][100.0%][w=1429MiB/s][w=366k IOPS][eta 00m:00s]
+TEST: (groupid=0, jobs=64): err= 0: pid=6648: Sat Feb 25 10:57:49 2023
+  write: IOPS=365k, BW=1427MiB/s (1497MB/s)(83.6GiB/60002msec); 0 zone resets
+    slat (usec): min=3, max=362, avg= 5.69, stdev= 2.21
+    clat (nsec): min=1083, max=12862k, avg=93902.23, stdev=30812.38
+     lat (usec): min=21, max=12866, avg=99.73, stdev=31.02
+    clat percentiles (usec):
+     |  1.00th=[   45],  5.00th=[   56], 10.00th=[   62], 20.00th=[   71],
+     | 30.00th=[   78], 40.00th=[   84], 50.00th=[   90], 60.00th=[   97],
+     | 70.00th=[  104], 80.00th=[  114], 90.00th=[  129], 95.00th=[  145],
+     | 99.00th=[  190], 99.50th=[  231], 99.90th=[  306], 99.95th=[  330],
+     | 99.99th=[  396]
+   bw (  MiB/s): min= 1407, max= 1448, per=100.00%, avg=1429.23, stdev= 0.12, samples=7616
+   iops        : min=360232, max=370764, avg=365883.34, stdev=31.05, samples=7616
+  lat (usec)   : 2=0.01%, 10=0.01%, 20=0.01%, 50=2.35%, 100=62.73%
+  lat (usec)   : 250=34.57%, 500=0.36%, 750=0.01%, 1000=0.01%
+  lat (msec)   : 2=0.01%, 4=0.01%, 10=0.01%, 20=0.01%
+  fsync/fdatasync/sync_file_range:
+    sync (nsec): min=41, max=68381, avg=101.77, stdev=220.00
+    sync percentiles (nsec):
+     |  1.00th=[   57],  5.00th=[   57], 10.00th=[   65], 20.00th=[   66],
+     | 30.00th=[   73], 40.00th=[   74], 50.00th=[   74], 60.00th=[   82],
+     | 70.00th=[   90], 80.00th=[  131], 90.00th=[  157], 95.00th=[  197],
+     | 99.00th=[  286], 99.50th=[  298], 99.90th=[  330], 99.95th=[ 4576],
+     | 99.99th=[11200]
+  cpu          : usr=1.64%, sys=28.91%, ctx=47207792, majf=0, minf=941
+  IO depths    : 1=200.0%, 2=0.0%, 4=0.0%, 8=0.0%, 16=0.0%, 32=0.0%, >=64=0.0%
+     submit    : 0=0.0%, 4=100.0%, 8=0.0%, 16=0.0%, 32=0.0%, 64=0.0%, >=64=0.0%
+     complete  : 0=0.0%, 4=100.0%, 8=0.0%, 16=0.0%, 32=0.0%, 64=0.0%, >=64=0.0%
+     issued rwts: total=0,21926137,0,21926101 short=0,0,0,0 dropped=0,0,0,0
+     latency   : target=0, window=0, percentile=100.00%, depth=1
+
+Run status group 0 (all jobs):
+  WRITE: bw=1427MiB/s (1497MB/s), 1427MiB/s-1427MiB/s (1497MB/s-1497MB/s), io=83.6GiB (89.8GB), run=60002-60002msec
+
+Disk stats (read/write):
+    md0: ios=0/21984791, merge=0/0, ticks=0/1782520, in_queue=1782520, util=100.00%, aggrios=0/5496917, aggrmerge=0/12829, aggrticks=0/480690, aggrin_queue=480690, aggrutil=99.90%
+  nvme3n1: ios=0/5497514, merge=0/12839, ticks=0/477178, in_queue=477179, util=99.90%
+  nvme2n1: ios=0/5495237, merge=0/12818, ticks=0/483204, in_queue=483204, util=99.90%
+  nvme1n1: ios=0/5496517, merge=0/12831, ticks=0/482822, in_queue=482823, util=99.90%
+  nvme4n1: ios=0/5498403, merge=0/12829, ticks=0/479556, in_queue=479556, util=99.90%
+```
   
 </details>
