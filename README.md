@@ -2,8 +2,16 @@
 
 NVMe driver was confirmed to be installed with the correct kernel before running the following tests.
 
+`Im4gn.16xlarge`
+* 64 vCPUs
+* 256GB memory
+* 4 x 7500 NVMe SSD
+* 100Gbps Network Bandwidth
+* 38Gbps EBS Bandwidth
+
+
 <details>
-<summary>is4gn.16xlarge - RAID 0</summary>
+<summary>im4gn.16xlarge - RAID 0</summary>
 
 ```
 root@ip-172-31-47-156:/nvme# fio --name TEST --eta-newline=5s --filename=temp.file --rw=randread --size=2g --io_size=10g --blocksize=4k --ioengine=libaio --fsync=1 --iodepth=1 --direct=1 --numjobs=64 --runtime=60 --group_reporting
@@ -112,7 +120,7 @@ Disk stats (read/write):
 </details>
 
 <details>
-<summary>is4gn.16xlarge - Single disk</summary>
+<summary>im4gn.16xlarge - Single disk</summary>
 
 ```
 root@ip-172-31-47-156:/nvme# fio --name TEST --eta-newline=5s --filename=temp.file --rw=randread --size=2g --io_size=10g --blocksize=4k --ioengine=libaio --fsync=1 --iodepth=1 --direct=1 --numjobs=64 --runtime=60 --group_reporting
